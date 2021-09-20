@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="common/header.html"></div>
+<body>
+<div th:replace="common/menu.html"></div>
+
+<div class="container mt-2">
+    <form method="POST" action="/signedup">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Name:</div>
+            <div class="col-4">
+                <textarea name="username"
+                          rows="1"
+                          class="form-control mb-2"
+                          placeholder="Enter Name Here"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Age:</div>
+            <div class="col-4">
+                <textarea name="age"
+                          rows="1"
+                          class="form-control mb-2"
+                          placeholder="Enter Name Here"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Address:</div>
+            <div class="col-4"><textarea name="address"
+                                         rows="1"
+                                         class="form-control mb-2"
+                                         placeholder="Enter Address Here"></textarea></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Password:</div>
+            <div class="col-4"><textarea name="password"
+                                         type="password"
+                                         rows="1"
+                                         class="form-control mb-2"
+                                         placeholder="Enter Password Here"></textarea></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="signUpType" id="admin" value="ADMIN">
+                    <label class="form-check-label" for="admin">Admin</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="signUpType" id="user" value="USER">
+                    <label class="form-check-label" for="user">
+                        User
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">
+                <button type="submit" class="btn btn-primary btn-dark m-4">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div th:replace="common/footer.html"></div>
+</body>
+</html>

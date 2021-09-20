@@ -1,0 +1,26 @@
+version: '3'
+volumes:
+  my-datavolume:
+services:
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: noteit
+      MYSQL_USER: noteit
+      MYSQL_PASSWORD: noteit
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - my-datavolume:/var/lib/db
+
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      HOSTNAME: db
+    image: archive:latest
+    ports:
+      - 8080:8080

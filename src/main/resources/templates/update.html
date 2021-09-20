@@ -1,0 +1,94 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="common/header.html"></div>
+<body>
+<div th:replace="common/menu.html"></div>
+<div class="container">
+    <form method="POST" action="/update">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><label for="id">Media ID:</label></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><input type="text" name="id"></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><label for="title">Title:</label></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><input type="text" name="title"></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><label for="about">About:</label></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><input type="text" name="mediatext"></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><label for="media_type">Media Type:</label></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><input type="text" name="mediatype"></div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <input type="radio" name="createType" id="set_child_status"
+                       value="CHILD">
+                <label class="form-check-label" for="set_child_status">Set Child Appropriate</label>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <input type="radio" name="createType" id="set_standard"
+                       value="STANDARD">
+                <label class="form-check-label" for="set_standard">Set Standard</label>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <button type="submit" class="btn btn-dark m-2">Submit</button>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+        <br>
+    </form>
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

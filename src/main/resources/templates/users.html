@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="common/header.html"></div>
+<body>
+<div th:replace="common/menu.html"></div>
+
+<div class="container mt-2">
+    <form method="POST" action="/searchedMedia">
+        <div class="row">
+            <div class="col-2">
+                <h5>Search this site:</h5>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-4 d-flex flex-column">
+                    <textarea name="search"
+                              class="form-control mb-2"
+                              placeholder="Enter Search Here"
+                              id="search"
+                              rows="1"></textarea>
+            </div>
+            <div class="col-3"></div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-dark m-2">Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row"></div>
+<hr class="container">
+<div class="container">
+    <h4>Results:</h4>
+</div>
+<div class="row"></div>
+
+<div class="container">
+    <div class="col-12 align-self-center">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Address</th>
+                <th>Classification</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="user : ${users}">
+                <tr>
+                    <td>
+                        <p th:text="${user.id}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${user.username}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${user.address}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${user.role}"></p>
+                    </td>
+                    <td>
+                        <a class="btn btn-dark m-2" th:href="@{/changebyid(id=${user.id})}">Login</a>
+                    </td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div th:replace="common/footer.html"></div>
+</body>
+</html>

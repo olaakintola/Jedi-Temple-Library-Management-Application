@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="common/header.html"></div>
+<body>
+<div th:replace="common/menu.html"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-lg">
+            <h2>Reading History</h2>
+        </div>
+        <div class="col-lg">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+
+    <form>
+        <div class="row">
+            <div class="col-lg-12 align-self-center">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>TRANSACTION ID</th>
+                        <th>TITLE</th>
+                        <th>ABOUT</th>
+                        <th>CHECKED OUT</th>
+                        <th style="text-align:center">RETURN DATE</th>
+                        <th>STATUS</th>
+                        <!--<th>ACTION</th>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="transaction : ${transactions}" class="table-warning" th:if="${transaction.active == true}">
+                        <td th:text="${transaction.id}"></td>
+                        <td th:text="${transaction.getMedia().getTitle()}"></td>
+                        <td th:text="${transaction.getMedia().getMediatext()}"></td>
+                        <td th:text="${#dates.format(transaction.created_date, 'dd MMMMM, YYYY')}"></td>
+                        <td th:if="${transaction.type == 'LOAN'}" th:text="${#dates.format(transaction.return_date, 'dd MMMMM, YYYY')}"></td>
+                        <td th:if="${!(transaction.type == 'LOAN')}"></td>
+                        <td th:text="${transaction.getType()}"></td>
+                        <!--<td><a class="btn btn-dark" th:if="${transaction.type == 'LOAN'}" th:href="@{/renew(id=${transaction.getMedia().id})}">Renew</a></td>-->
+                    </tr>
+                    <tr th:each="transaction : ${transactions}" th:if="${!(transaction.active == true)}">
+                        <td th:text="${transaction.id}"></td>
+                        <td th:text="${transaction.getMedia().getTitle()}"></td>
+                        <td th:text="${transaction.getMedia().getMediatext()}"></td>
+                        <td th:text="${#dates.format(transaction.created_date, 'dd MMMMM, YYYY')}"></td>
+                        <!--<td th:text="${#dates.format(transaction.return_date, 'dd MMMMM, YYYY')}"></td>-->
+                        <td></td>
+                        <td th:text="${transaction.getType()}"></td>
+                        <!--<td><a class="btn btn-dark" th:href="@{/renew(id=${transaction.getMedia().id})}">Renew</a></td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+    <div th:replace="common/footer.html"></div>
+</div>
+</body>
+</html>

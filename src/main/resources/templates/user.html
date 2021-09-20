@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="common/header.html"></div>
+<body>
+<div th:replace="common/menu.html"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-lg">
+            <h2>User Details</h2>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div>
+        <div class="col-lg-12 align-self-center" cols="50">
+            <label for="title">Username:</label>
+            <span th:text="${user.username}"></span>
+        </div>
+        <div></div>
+    </div>
+    <div>
+        <div class="col-lg-12" cols="50">
+            <label>User Role:</label>
+            <span th:text="${user.role}"></span>
+        </div>
+        <div class="col-lg-12" cols="50">
+            <label>Address:</label>
+            <span th:text="${user.address}"></span>
+        </div>
+        <div class="col-lg-12" cols="50">
+            <label>Membership Duration:</label>
+            <span th:text="${user.membership_years}"></span>
+        </div>
+        <div class="col-lg-12" cols="50">
+            <label>Membership Classification:</label>
+            <span th:if="${user.is_full_member}">Full Member</span>
+            <span th:unless="${user.is_full_member}">Temp Member</span>
+        </div>
+        <div class="col-lg-12" cols="50">
+            <label>Membership Status:</label>
+            <span th:if="${user.is_child}">CHILD ACCOUNT</span>
+            <span th:unless="${user.is_child}">ADULT ACCOUNT</span>
+        </div>
+
+        <div th:if="${!(user.role == 'ADMIN')}"
+             class="row">
+            <div class="col-lg-12">
+                <a href="/history">
+                    <button type="submit" class="btn btn-primary btn-dark m-2">User History</button>
+                </a>
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+</div>
+
+<div class="container mt-2">
+    <form method="POST" action="/updateaccount">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Name:</div>
+            <div class="col-4">
+                <textarea name="username"
+                          rows="1"
+                          class="form-control mb-2"
+                          placeholder="Enter Name Here"></textarea>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Address:</div>
+            <div class="col-4"><textarea name="address"
+                                         rows="1"
+                                         class="form-control mb-2"
+                                         placeholder="Enter Address Here"></textarea></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">Password:</div>
+            <div class="col-4"><textarea name="password"
+                                         type="password"
+                                         rows="1"
+                                         class="form-control mb-2"
+                                         placeholder="Enter Password Here"></textarea></div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="form-check"
+                     th:if="${user.role == 'ADMIN'}">
+                    <input class="form-check-input" type="radio" name="signUpType" id="admin" value="ADMIN">
+                    <label class="form-check-label" for="admin">Admin</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="form-check"
+                     th:if="${user.role == 'ADMIN'}">
+                    <input class="form-check-input" type="radio" name="signUpType" id="user" value="USER">
+                    <label class="form-check-label" for="user">
+                        User
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-1">
+                <button type="submit" class="btn btn-primary btn-dark m-4">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+</div>
+
+<div th:if="${user.role == 'ADMIN'}"
+     class="container">
+    <hr class="container">
+    <div class="container">
+        <h4>Admin:</h4>
+    </div>
+
+    <div class="col-lg-12">
+        <a href="/users">
+            <button type="submit" class="btn btn-primary btn-dark m-2">Users</button>
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">&nbsp;</div>
+    </div>
+    <div class="row" style="margin-left: 140px">
+        <form method="POST" action="/changeuser">
+            <div class="row">
+                <div class="col-2">
+                    <h5>User Search:</h5>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-4 d-flex flex-column">
+                <textarea name="search" class="form-control mb-2"
+                          placeholder="Search Here"
+                          id="search"
+                          rows="1"></textarea>
+                </div>
+                <div class="col-3"></div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-dark m-2">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+</div>
+<div class="row">
+    <div class="col-lg-12">&nbsp;</div>
+</div>
+
+
+<div th:replace="common/footer.html"></div>
+</body>
+</html>
